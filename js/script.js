@@ -13,7 +13,7 @@ let min = (sec = msc = 0),
 btStart.addEventListener("click", () => {
   startTimer = setInterval(() => {
     msc++;
-    if (msc == 99) {
+    if (msc == 59) {
       msc = 0;
       sec++;
     }
@@ -25,7 +25,7 @@ btStart.addEventListener("click", () => {
       colon.classList.add("unhide");
     }
     updateDisplay();
-  }, 9);
+  }, 1);
 
   btStart.classList.add("startdsd");
   btPause.classList.remove("stopdsd");
