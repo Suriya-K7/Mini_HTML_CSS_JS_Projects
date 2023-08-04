@@ -4,48 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My learning</title>
+    <title>To do list</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="container">
-      <div class="card" style="--i: #006266">
-        <div class="line" style="--i: #006266"></div>
-        <div class="img"><img src="./images/computer.png" alt="" /></div>
-        <div class="content">
-          <div class="title">Coding</div>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit,
-            deleniti?
-          </p>
-          <a href="#">Read more</a>
-        </div>
-      </div>
-      <div class="card" style="--i: #833471">
-        <div class="line" style="--i: #833471"></div>
-        <div class="img"><img src="./images/search.png" alt="" /></div>
-        <div class="content">
-          <div class="title">Search</div>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit,
-            deleniti?
-          </p>
-          <a href="#">Read more</a>
-        </div>
-      </div>
-      <div class="card" style="--i: #30336b">
-        <div class="line" style="--i: #30336b"></div>
-        <div class="img"><img src="./images/video.png" alt="" /></div>
-        <div class="content">
-          <div class="title">Youtube</div>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit,
-            deleniti?
-          </p>
-          <a href="#">Read more</a>
-        </div>
+      <div class="header">To-Do List</div>
+    </div>
+    <div class="addBoxContainer">
+      <div class="addbox">
+        <input
+          type="text"
+          id="text"
+          class="text"
+          placeholder="Please Enter Activities"
+          autocomplete="off"
+        />
+        <button class="addBtn">Add</button>
       </div>
     </div>
+    <section>
+      <div class="boxContainer">
+        <!-- <div class="box">
+          <div class="itemText">Briyani</div>
+          <div class="removeBtn" onclick="removeBtn(event)">✖</div>
+        </div>
+        <div class="box">
+          <div class="itemText">Briyani</div>
+          <div class="removeBtn" onclick="removeBtn(event)">✖</div>
+        </div> -->
+      </div>
+      <div class="img">
+        <img src="./images/img01.jpg" />
+      </div>
+    </section>
+
     <script src="./js/script.js"></script>
   </body>
 </html>
