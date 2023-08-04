@@ -1,366 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inspiration&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 *{
     font-family: 'Poppins', sans-serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    user-select: none;
+}
+html{
+    font-size: 12px;
 }
 body{
-    background-color: #1e272e;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    display: grid;
-    place-content: center;
-}
-.container{
-    width: 600px;
-    height: 375px;
-    background: linear-gradient(118deg, rgba(238,49,81,1) 0%, rgba(238,42,108,1) 100%);
-    border-radius: 5px;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     overflow: hidden;
+    /* background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/image/bg.jpg"); */
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-position: center; */
+    color: #fff;
+    position: relative;
 }
-.boxLeftSI,
-.boxLeftSP{
-    position: absolute;
-    width: 300px;
-    height: 100%;
+.bgimage{
     left: 0;
     top: 0;
-    background-color: #FFF;
-    transition: 0.5s;
-    opacity: 1;
+    position: absolute;
+    background: linear-gradient(rgba(0, 0, 0, 0.418), rgba(0, 0, 0, 0.886));
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
-.boxLeftSI.hidden,
-.boxLeftSP.hidden{
-    left: -50%;
-    opacity: 0;
+.bgimage img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    object-position: center;
 }
-.boxLeftSI h3{
-    text-align: center;
-    font-size: 32px;
+p{
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin: 15px 0;
+    font-family: 'Inspiration', cursive;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
+.head{
+    font-size: 2rem;
     font-weight: 500;
-    margin-top: 35px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
 }
-.boxLeftSI .social,
-.boxRightSP .social{
-    margin-top: 15px;
+.container{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-}
-.boxLeftSI .social button,
-.boxRightSP .social button{
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    border: 1px solid rgba(128, 128, 128, 0.498);
-    color: rgb(128, 128, 128);
-    transition: 0.5s;
-}
-.boxLeftSI .social button:hover,
-.boxRightSP .social button:hover{
-    background: rgb(238,49,81);
-    color: #FFF;
-    font-size: 18px;
-    cursor: pointer;
-}
-.boxLeftSI h5,
-.boxRightSP h5{
-    text-align: center;
-    margin-top: 5px;
-    font-weight: 400;
-}
-.boxLeftSI .inputBox,
-.boxRightSP .inputBox{
-    position: relative;
-    display: grid;
-    place-content: center;
-}
-.boxLeftSI .inputBox input,
-.boxRightSP .inputBox input{
     width: 250px;
-    height: 35px;
-    margin-top: 15px;
-    border: none;
-    outline: none;
-    border-radius: 3px;
-    background-color: rgba(128, 128, 128, 0.316);
-    padding: 10px ;
-    transition: 0.3s;
+    gap: 10px;
 }
-.boxLeftSI .inputBox input:hover,
-.boxLeftSI .inputBox input:focus,
-.boxRightSP .inputBox input:hover,
-.boxRightSP .inputBox input:focus{
-    border: 1px solid rgba(128, 128, 128, 0.778);
-}
-.boxLeftSI .inputBox label,
-.boxRightSP .inputBox label{
-    position: absolute;
-    top: 20px;
-    left: 34px;
-    transition: 0.3s;
-}
-.boxLeftSI .inputBox input:hover + label,
-.boxLeftSI .inputBox input:focus + label,
-.boxLeftSI .inputBox input:valid + label,
-.boxRightSP .inputBox input:hover + label,
-.boxRightSP .inputBox input:focus + label,
-.boxRightSP .inputBox input:valid + label{
-    top: -0.4px;
-    left: 12px;
-    background-color: #fff;
-    padding: 0 10px;
-    border-radius: 10px;
-    font-size: 10px;
-}
-.boxLeftSI a,
-.boxRightSP a{
-    display: block;
-    margin-top: 15px;
+.box{
+    width: 50px;
+    height: 50px;
     text-align: center;
-    text-decoration: none;
-    color: #1e272e;
 }
-.boxLeftSI a:hover,
-.boxRightSP a:hover{
-    color: rgb(238,49,81);
+.box h2{
+    font-size: 1.5rem;
 }
-.boxLeftSI .bthSignIn,
-.boxRightSP .bthSignUp{
-    margin-top: 10px;
-    display: block;
-    margin: 20px auto;
-    color: #1e272e;
-    padding: 3px 15px;
-    border: none;
-    background: rgb(238,49,81);
-    background: linear-gradient(118deg, rgba(238,49,81,1) 0%, rgba(238,42,108,1) 100%);
-    border-radius: 18px;
-    font-size: 16px;
-    font-weight: 500;
-    transition: 0.3s;
-    color: white;
+.box small{
+    font-size: 1rem;
 }
-.boxLeftSI .bthSignIn:hover,
-.boxRightSP .bthSignUp:hover{
-    letter-spacing: 1px;
-    transform: scale(1.1);
-    box-shadow: 0 0 5px #000;
-    cursor: pointer;
-}
-.boxRightSI{
-    position: absolute;
-    width: 300px;
-    height: 100%;
-    right: 0;
-    top: 0;
-    background: rgb(238,49,81);
-    background: linear-gradient(128deg, rgba(238,49,81,1) 50%, rgba(238,42,108,1) 100%);
-    filter: drop-shadow(0 0 10px rgb(238,49,81));
-    transition: 0.5s;
-    opacity: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    color: #fff;
-    gap: 5px;
-}
-.boxRightSI.hidden{
-    right: -50%;
-    opacity: 0;
-}
-.boxRightSI h1,
-.boxLeftSP h1{   
-    font-weight: 700;
-    font-size: 30px;
-    letter-spacing: 1px;
-}
-.boxRightSI p,
-.boxLeftSP p{
-    text-align: center;
-    font-size: 14px;
-}
-.boxRightSI .btnSignUp,
-.boxLeftSP #btnSignIn{
-    display: block;
-    margin-top: 10px;
-    padding: 3px 15px;
-    border: 1px solid #fff;
-    background: rgb(238,49,81);
-    background: linear-gradient(118deg, rgba(238,49,81,1) 0%, rgba(238,42,108,1) 100%);
-    border-radius: 18px;
-    font-size: 16px;
-    font-weight: 500;
-    transition: 0.3s;
-    color: #fff;
-}
-.boxRightSI .btnSignUp:hover,
-.boxLeftSP #btnSignIn:hover{
-    letter-spacing: 1px;
-    transform: scale(1.1);
-    box-shadow: 0 0 5px #000;
-    cursor: pointer;
-}
-.boxLeftSP{
-    background: rgb(238,49,81);
-    background: linear-gradient(128deg, rgba(238,49,81,1) 50%, rgba(238,42,108,1) 100%);
-    transition: 0.5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    color: #fff;
-    gap: 5px;
-    filter: drop-shadow(0 0 10px rgb(238,49,81));
-    z-index: 1;
-}
-.boxRightSP{
-    position: absolute;
-    width: 300px;
-    height: 100%;
-    right: 0;
-    top: 0;
-    background-color: #FFF;
-    transition: 0.5s;
-    opacity: 1;
-}
-.boxRightSP.hidden{
-    right: -50%;
-    opacity: 0;
-}
-.boxRightSP h3{
-    text-align: center;
-    font-size: 32px;
-    font-weight: 500;
-    margin-top: 15px;
-}
-.boxRightSP .inputBox input{
-    margin-top: 18px;
-}
-.boxRightSP .inputBox label{
-    top: 23px;
-    left: 34px;
-}
-.boxRightSP .inputBox input:hover + label,
-.boxRightSP .inputBox input:focus + label,
-.boxRightSP .inputBox input:valid + label{
-    top: 1px;
-}
-@media (max-width:600px) {
-    .container{
-        width: 550px;
-        height: 375px;
+@media(min-width:768px){
+    p{
+        font-size: 3rem;
     }
-    .boxLeftSI,
-    .boxLeftSP,
-    .boxRightSI,
-    .boxRightSP{
-        width: 275px;
+    .head{
+        font-size: 3rem;
     }
-    .boxLeftSI .inputBox input,
-    .boxRightSP .inputBox input{
-        width: 250px;
+    .box h2{
+        font-size: 2rem;
     }
-}
-@media (max-width:450px) {
-    body{
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
+    .box small{
+        font-size: 1.5rem;
     }
     .container{
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
+        width: 400px;
+        gap: 30px;
     }
-    .boxLeftSI{
-        width: 100%;
-        height: 50%;
-        left: 0;
-        top: 25%;
-        filter: drop-shadow(0 0 10px #fff);
+}
+@media(min-width:992px){
+    p{
+        font-size: 3.5rem;
     }
-    .boxLeftSI.hidden{
-        left: 0;
-        top: 100%;
+    .head{
+        font-size: 3.5rem;
     }
-    .boxLeftSI h3{
-        margin-top: 25px;
+    .box h2{
+        font-size: 2.5rem;
     }
-    .boxLeftSI h5{
-        margin-top: 10px;
+    .box small{
+        font-size: 2rem;
     }
-    .boxLeftSI .inputBox input,
-    .boxRightSP .inputBox input{
-        width: 325px;
-        margin-top: 15px;
-        margin-bottom: 10px;
-    }
-    .boxLeftSI .inputBox label{
-        left: 42px;
-    }
-    .boxRightSP .inputBox label{
-        top: 20px;
-        left: 42px;
-    }
-    .boxLeftSI .inputBox input:hover + label,
-    .boxLeftSI .inputBox input:focus + label,
-    .boxLeftSI .inputBox input:valid + label,
-    .boxRightSP .inputBox input:focus + label,
-    .boxRightSP .inputBox input:hover + label,
-    .boxRightSP .inputBox input:valid + label{
-        top: -4px;
-        left: 22px;
-        border-radius: 10px;
-        font-size: 12px;
-    }
-
-    .boxLeftSI .bthSignIn{
-        margin: 15px auto;
-    }
-    .boxRightSI{
-        width: 100%;
-        height: 25%;
-        left: 0;
-        top: 0;
-        gap: 15px;
-    }
-    .boxRightSI.hidden{
-        right: 0;
-        top: -25%;
-    }
-    .boxLeftSP{
-        width: 100%;
-        height: 25%;
-        left: 0;
-        top: 50%;
-    }
-    .boxRightSP{
-        width: 100%;
-        height: 50%;
-        left: 0;
-        top: 0;
-    }
-    .boxLeftSP.hidden{
-        left: 0;
-        top: 100%;
-    }
-    .boxRightSP.hidden{
-        right: 0;
-        top: -50%;
+    .container{
+        width: 500px;
+        gap: 60px;
     }
 }
