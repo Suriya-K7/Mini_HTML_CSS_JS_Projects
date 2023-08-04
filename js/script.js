@@ -1,70 +1,83 @@
-const slideritems=document.querySelectorAll('.slider-items');
-const prevBtn=document.querySelector('.btnprev');
-const nxtBtn=document.querySelector('.btnnxt');
-let sliderPosition=0;
-let totalSlide=slideritems.length;
-
-
-nxtBtn.addEventListener('click',()=>{
-    nxtSlide();
-});
-
-prevBtn.addEventListener('click',()=>{
-    prevSlide();
-});
-
-function updateSlide(){
-    slideritems.forEach(slide=>{
-        slide.classList.remove('active');
-        slide.classList.add('hidden');
-    });
-    slideritems[sliderPosition].classList.add('active');
-    CreatedDots.forEach(dot=>{
-        dot.classList.remove('active');
-    });
-    CreatedDots[sliderPosition].classList.add('active');
+const yourBalance=document.querySelector('.balance');
+const income=document.querySelector('#income');
+const expense=document.querySelector('#expense');
+const form=document.querySelector('.form');
+const inputDescription=document.querySelector('#description');
+const inputAmount=document.querySelector('#amount');
+const trans=document.querySelector('.trans');
+/*--------updating in local storage------------*/
+let localStorageDummydata=JSON.parse(localStorage.getItem("dummyData"));
+let dummydata=localStorage.getItem("dummyData")!==null?localStorageDummydata:[];
+function updatingLocalStorage() {
+    localStorage.setItem("dummyData",JSON.stringify(dummydata));
 };
-function nxtSlide(){
-    if(sliderPosition==totalSlide-1){
-        sliderPosition=0;
-    }else{
-        sliderPosition++;
-    };
-    updateSlide();
-};
-function prevSlide(){
-    if(sliderPosition==0){
-        sliderPosition=totalSlide-1;
-    }else{
-        sliderPosition--;
-    };
-    updateSlide();
-};
-const sliderDot=document.querySelector('.slider-dots');
-    slideritems.forEach(slide=>{
-        const dots=document.createElement('div');
-        dots.classList.add('dot');
-    sliderDot.appendChild(dots);
-});
-
-const CreatedDots=document.querySelectorAll('.dot');
-CreatedDots[sliderPosition].classList.add('active');
-
-CreatedDots.forEach((dot,index)=>{
-    dot.addEventListener('click',()=>{
-        sliderPosition=index;
-        updateSlide();
+/*------------------------------------*/
+window.addEventListener('DOMContentLoaded',()=>{
+    inputDescription.select();}
+    )
+window.addEventListener('DOMContentLoaded',updateData());
+function updateData(){
+    trans.innerHTML="";
+    dummydata.forEach((item)=>{
+        let desc=item.desc;
+        let amount=item.amount;
+        let itemId=item.id;
+        let sign=amount>0?"+":"-";
+        let spanClass=amount>0?"plus":"minus";
+        const liElement=document.createElement('li');
+        liElement.classList.add(spanClass)
+        liElement.innerHTML=`
+        <span class="desc ${spanClass}">${desc}</span>
+        <span class="amt">${sign} ${Math.abs(amount).toFixed(2)}</span>
+        <button onclick="removeList(${itemId})">❌</button>`;
+        trans.appendChild(liElement);
+        updateBalance();
+        updatingLocalStorage();
     })
+}
+/*----------------------------------------*/
+form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    loadTransaction();
 });
-
-setInterval(()=>{
-    if(sliderPosition==totalSlide-1){
-        sliderPosition=0;
-    }else{
-        sliderPosition++;
+function loadTransaction(){
+    trans.innerHTML=''
+    let newId=Math.floor(Math.random()*1000000);
+    let newDesc=inputDescription.value.trim();
+    let newAmount=+inputAmount.value.trim();
+    let newTransaction= {id:newId, desc:newDesc, amount:newAmount};
+    dummydata.push(newTransaction);
+    updateData();
+    inputDescription.value="";
+    inputAmount.value="";
+    inputDescription.select();
+}
+/*-----------removing li element-----------------*/
+// method 1 (simple) for using need to mention removeList(this) but by this method need to write more code for updating everthing
+/*
+function removeList(e){
+e.parentElement.remove();
+};*/
+// method 2(removing by unique id)
+function removeList(id){
+    if(confirm("Are you sure you want to delete?")){
+        dummydata=dummydata.filter((item)=>item.id!==id);
+        updateData();
+        updateBalance();
+        updatingLocalStorage();
     };
-    updateSlide();
-},5000)
+};
+/*---------updating balance---------*/
+function updateBalance(){
+        let totalAmount=dummydata.map((item)=>item.amount).reduce((acc,item)=>(acc+=item),0);
+        yourBalance.innerHTML=`💰 ${totalAmount.toFixed(2)}`;
+        let incomeTotal=dummydata.map((item)=>item.amount).filter((item)=>item>0).reduce((acc,item)=>(acc+=item),0);
+        let expenceTotal=dummydata.map((item)=>item.amount).filter((item)=>item<0).reduce((acc,item)=>(acc+=item),0);
+        income.innerHTML=`💰 ${incomeTotal.toFixed(2)}`;
+        expense.innerHTML=`💰 ${Math.abs(expenceTotal).toFixed(2)}`;    
+}
+
+
 
 
 
