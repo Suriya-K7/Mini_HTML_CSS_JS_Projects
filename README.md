@@ -1,1 +1,1 @@
-# 🔗 TodoApp JS - CSS - HTML
+# 🔗 Color-generator JS - CSS - HTML
