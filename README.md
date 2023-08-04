@@ -1,1 +1,1 @@
-# 🔗 Photo Galary JS - CSS - HTML
+# 🔗 Password Generator JS - CSS - HTML

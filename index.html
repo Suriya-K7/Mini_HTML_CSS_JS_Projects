@@ -4,19 +4,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pic Gallery</title>
+    <title>Passowrd Generator</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <h2>Password Generator</h2>
     <div class="container">
-      <img class="img" src="./images/1.jpg" />
-      <img class="img" src="./images/2.jpg" />
-      <img class="img" src="./images/3.jpg" />
-      <img class="img" src="./images/4.jpg" />
-      <img class="img" src="./images/5.jpg" />
-      <img class="img" src="./images/6.jpg" />
+      <form action="#" id="frm">
+        <div class="form-group">
+          <input type="text" id="output" />
+          <button id="copy">copy passowrd</button>
+        </div>
+        <div class="form-group">
+          <label for="length">Passowrd Length</label>
+          <input type="number" id="length" value="8" min="6" />
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="number" checked />
+          <label for="number">Numbers</label>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="capital" />
+          <label for="capital">Capital Letters</label>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="small" />
+          <label for="small">Small Letters</label>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="symbol" />
+          <label for="symbol">Symbols</label>
+        </div>
+        <div class="form-group">
+          <button id="generate">Generate</button>
+        </div>
+      </form>
     </div>
-
     <script src="./js/script.js"></script>
   </body>
 </html>
