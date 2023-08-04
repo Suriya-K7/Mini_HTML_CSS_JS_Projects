@@ -1,1 +1,1 @@
-# 🔗 JS - CSS - HTML Mini Project - practice
+# [🔗 Character-selector](https://character-selector-suriya-k7.netlify.app/)
