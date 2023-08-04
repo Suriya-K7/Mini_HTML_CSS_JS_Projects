@@ -1,91 +1,362 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Wallpoet&display=swap');
+
+@font-face {
+    font-family: digital-7;
+    src: url(/css/digital-7.ttf);
+}
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif; 
+    user-select: none;
+}
+html{
+    font-size: 22px;
 }
 body{
-    background-color: #000000da;
-    display: grid;
-    place-content: center;
-    width: 100vw;
+    background-color: #2f3640;
+    width: 100%;
     height: 100vh;
 }
-.container{
-    width: 400px;
-    background-color: #7f8fa6;
+.control{
     display: flex;
-    padding: 10px;
-    border-radius: 5px;
-}
-.tagcontainer{
-    flex: 1;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 5px;
-}
-.tag{
-    background-color: #f5f6fa;
-    padding: 5px 10px 5px 15px;
-    display: flex;
+    height: 3rem;
     align-items: center;
-    gap: 10px;
-    font-weight: 500;
-    border-radius: 20px;
-    height: 35px;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px;
 }
-.tag lord-icon{
-    width: 25px;
-    height: 25px;
+@media(max-width:490px){
+    .control{
+        height: 5rem;
+        padding: 1rem;
+    }
+    input[type="text"]{
+        width: 5rem;
+    }
+
 }
-.tagcontainer input{
-    flex: 1;
+.btn{
     border: none;
     outline: none;
-    padding-left: 10px;
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 20px;
-    transition: 0.5s;
-    height: 35px;
+    height: 1.1rem;
+    border-radius: 3px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    background-color: #e84118;
+    width: 90px;
+    transition: 0.3s ease;
+    color: white;
+    margin-right: 10px;
 }
-.tagcontainer input:hover,
-.tagcontainer input:focus{
-    border: 1px solid #192a56;
+.btn.active,
+.btn:hover{
+    border: 1px solid #e84118;
+    background-color: white;
+    color: #e84118;
+    transform: scale(1.1);
+    text-transform: uppercase;
 }
-.icons{
-    padding: 5px;
+input[type="text"]{
+    height: 1.1rem;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    border-radius: 3px;
+    transition: 0.3s ease;
+    font-size: 0.6rem;
+    font-weight: 600;
 }
-@media (max-width:450px) {
-    .container{
-        width: 375px;
-        display: grid;
-        place-content: center;
+input[type="text"]:hover,
+input[type="text"]:focus{
+    outline: 3px solid #e84118;
+}
+.container{
+    margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1rem;
+    place-content: center;
+}
+.box{
+    height: 11rem;
+    border: 5px solid white;
+    background-color: white;
+    transition: 0.3s ease;
+    position: relative;
+}
+.box:hover{
+    outline: 3px solid #e84118;
+}
+.img-box{
+    width: 100%;
+    height: 88%;
+    overflow: hidden;
+    background-color: red;
+    object-fit: cover;
+}
+.img-box img{
+    width: 100%;
+    height: 100%;
+    transition: 0.3s ease;
+}
+.img-box:hover img{
+    transform: scale(1.1);
+}
+.box h5{
+    color: #e84118;
+}
+.box span{
+    font-size: 16px;
+    font-weight: 700;
+    color: #e84118;
+}
+.txt{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    width: 92%;
+}
+.box ion-icon{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.box ion-icon:hover{
+    color: white;
+    transform: scale(1.3);
+    background-color: #2f3640;
+}
+.txt-cart ion-icon{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.txt-cart ion-icon:hover{
+     color: white;
+     transform: scale(1.3);
+     background-color: #2f3640;
+}
+
+.nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    padding: 10px 10px 0 10px; ;
+}
+.logo{
+    text-decoration: none;
+    color: #e84118;
+}
+.cartbox{
+    color: white;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.cartbox:hover .cart{
+    color: #e84118;
+    transform: scale(1.1);
+}
+.cart{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease;
+}
+.cart-count{
+    position: absolute;
+    top: -5px;
+    left: 60%;
+    font-size: 12px;
+    color: #e84118;
+    font-weight: 700;
+}
+.cart-items{
+    position: fixed;
+    top: 0;
+    width: 300px;
+    z-index: 100;
+    right: -300px;
+    height: 100%;
+    background-color: #ffffff;
+    border-left: 3px solid #e84118;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: 0.3s ease;
+}
+.cart-items.active{
+    right: 0;
+}
+.cart-items h2{
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #e84118;
+}
+.cart-content{
+    width: 100%;
+}
+.cart-box{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+.cart-box .cart-img{
+    width: 120px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid #e84118;
+    border-radius: 3px;
+}
+.detail-box{
+    font-size: 16px;
+    height: 100px;
+    width: 150px;
+}
+.cart-qty{
+    width: 40px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 5px;
+    font-size: 16px;
+    transition: 0.3s ease;
+    border: 1px solid #2f3640;  
+}
+.cart-qty:hover,
+.cart-qty:focus{
+    border: 1px solid #e84118;   
+}
+.price-box{
+    display: flex;
+    padding: 10px 0;
+}
+.cart-food{
+    font-weight: 700;
+    color: #e84118;
+}
+.cart-price{
+    padding-right: 30px;
+    font-weight: 500;
+}
+.cart-total{
+    font-weight: 600; 
+    color: #e84118;
+}
+.trash{
+    position: absolute;
+    right: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.trash:hover{
+    transform: scale(1.2);
+    color: #e84118;
+}
+.close{
+    position: absolute;
+    right: 0.1rem;
+    top: 0.1rem;
+    color: #e84118;
+    cursor: pointer;
+    font-size: 25px;
+    transition: 0.3s ease;
+}
+.close:hover{
+    transform: scale(1.2);
+}
+.total{
+    margin: 1rem 0;
+    color: #e84118;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.btn-buy{
+    border: none;
+    outline: none;
+    height: 1.8rem;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #e84118;
+    width: 10rem;
+    transition: 0.3s ease;
+    color: white;
+    text-transform: uppercase;
+    display: block;
+    margin: auto;
+}
+.btn-buy.active,
+.btn-buy:hover{
+    border: 1px solid #e84118;
+    background-color: white;
+    color: #e84118;
+    transform: scale(1.1);
+    text-transform: uppercase;
+    box-shadow: 0 0 15px #e84118;
+    font-weight: 700;
+}
+.buyBtn{
+    opacity: 0;
+}
+.buyBtn.active{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2f3640e5;
+    z-index: 150;
+    transition: 0.3s ease;
+    animation: 0.5s ease;
+    animation: buy 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e84118;
+    font-size: 1.5rem;
+    font-weight: 600;
+    opacity: 1;
+}
+@keyframes buy{
+    0%{
+        background-color: #2f364055;
+        z-index: 150;
     }
-    .tagcontainer{
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-top: 5px;
+    30%{
+        background-color: #2f36405e;
+        z-index: 150;
     }
-    .icons{
-        margin-top: 10px;
-        padding: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+    60%{
+        background-color: #2f3640ab;
+        z-index: 150;
+    }    
+    90%{
+        background-color: #2f3640e5;
+        z-index: 150;
     }
-    .tagcontainer input{
-        animation: blink 2s linear infinite;
-    }
-    @keyframes blink {
-        0%,100%{
-            border-color: #192a56;
-        }
-        50%{
-            border-color: transparent;
-        }
+    100%{
+
     }
 }
+
