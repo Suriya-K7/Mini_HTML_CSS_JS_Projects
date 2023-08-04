@@ -1,83 +1,190 @@
-const yourBalance=document.querySelector('.balance');
-const income=document.querySelector('#income');
-const expense=document.querySelector('#expense');
-const form=document.querySelector('.form');
-const inputDescription=document.querySelector('#description');
-const inputAmount=document.querySelector('#amount');
-const trans=document.querySelector('.trans');
-/*--------updating in local storage------------*/
-let localStorageDummydata=JSON.parse(localStorage.getItem("dummyData"));
-let dummydata=localStorage.getItem("dummyData")!==null?localStorageDummydata:[];
-function updatingLocalStorage() {
-    localStorage.setItem("dummyData",JSON.stringify(dummydata));
-};
-/*------------------------------------*/
-window.addEventListener('DOMContentLoaded',()=>{
-    inputDescription.select();}
-    )
-window.addEventListener('DOMContentLoaded',updateData());
-function updateData(){
-    trans.innerHTML="";
-    dummydata.forEach((item)=>{
-        let desc=item.desc;
-        let amount=item.amount;
-        let itemId=item.id;
-        let sign=amount>0?"+":"-";
-        let spanClass=amount>0?"plus":"minus";
-        const liElement=document.createElement('li');
-        liElement.classList.add(spanClass)
-        liElement.innerHTML=`
-        <span class="desc ${spanClass}">${desc}</span>
-        <span class="amt">${sign} ${Math.abs(amount).toFixed(2)}</span>
-        <button onclick="removeList(${itemId})">❌</button>`;
-        trans.appendChild(liElement);
-        updateBalance();
-        updatingLocalStorage();
-    })
+const input = document.querySelector("#searchinput");
+const searchList = document.querySelector(".searchitems");
+const body = document.querySelector("body");
+input.addEventListener("keyup", updateList);
+async function updateList() {
+  const response = await fetch("./data/data.json");
+  const dataKeyword = await response.json();
+  let suggest = [];
+  let inputKey = input.value.trim().toLowerCase();
+  suggest = dataKeyword.filter((keyword) => {
+    return keyword.search.toLowerCase().includes(inputKey);
+  });
+  const content = suggest.map((list) => {
+    const textToSearch = list.search;
+    return `<li onclick="updateinput('${textToSearch}')">${highLight(
+      textToSearch
+    )}</li>`;
+  });
+  searchList.innerHTML = content.join("");
+  if (inputKey.length < 1 || !suggest.length) {
+    searchList.innerHTML = "";
+  }
+  document.addEventListener("click", () => {
+    searchList.innerHTML = "";
+  });
 }
-/*----------------------------------------*/
-form.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    loadTransaction();
+input.addEventListener("click", (e) => {
+  input.select();
 });
-function loadTransaction(){
-    trans.innerHTML=''
-    let newId=Math.floor(Math.random()*1000000);
-    let newDesc=inputDescription.value.trim();
-    let newAmount=+inputAmount.value.trim();
-    let newTransaction= {id:newId, desc:newDesc, amount:newAmount};
-    dummydata.push(newTransaction);
-    updateData();
-    inputDescription.value="";
-    inputAmount.value="";
-    inputDescription.select();
+function updateinput(textToSearch) {
+  input.value = textToSearch;
 }
-/*-----------removing li element-----------------*/
-// method 1 (simple) for using need to mention removeList(this) but by this method need to write more code for updating everthing
-/*
-function removeList(e){
-e.parentElement.remove();
-};*/
-// method 2(removing by unique id)
-function removeList(id){
-    if(confirm("Are you sure you want to delete?")){
-        dummydata=dummydata.filter((item)=>item.id!==id);
-        updateData();
-        updateBalance();
-        updatingLocalStorage();
-    };
-};
-/*---------updating balance---------*/
-function updateBalance(){
-        let totalAmount=dummydata.map((item)=>item.amount).reduce((acc,item)=>(acc+=item),0);
-        yourBalance.innerHTML=`💰 ${totalAmount.toFixed(2)}`;
-        let incomeTotal=dummydata.map((item)=>item.amount).filter((item)=>item>0).reduce((acc,item)=>(acc+=item),0);
-        let expenceTotal=dummydata.map((item)=>item.amount).filter((item)=>item<0).reduce((acc,item)=>(acc+=item),0);
-        income.innerHTML=`💰 ${incomeTotal.toFixed(2)}`;
-        expense.innerHTML=`💰 ${Math.abs(expenceTotal).toFixed(2)}`;    
+function highLight(textToSearch) {
+  const searchInput = input.value.toLowerCase();
+  const startIndex = textToSearch.toLowerCase().indexOf(searchInput);
+  const highLightedText =
+    textToSearch.substring(0, startIndex) +
+    "<mark>" +
+    searchInput +
+    "</mark>" +
+    textToSearch.substring(startIndex + searchInput.length);
+  return highLightedText;
 }
-
-
-
-
-
+/******  form validation****** */
+// custom password viewer
+const form = document.querySelector("#form");
+const eyes = document.querySelectorAll(".eye");
+const username = document.querySelector(".username");
+const email = document.querySelector(".email");
+const password = document.querySelector(".password");
+const cpassword = document.querySelector(".cpassword");
+const mailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+const passwordPattern = /^[a-zA-Z0-9]*$/;
+const allInputs = document.querySelectorAll("input");
+const p = document.querySelectorAll("p");
+const modal = document.querySelector(".modal");
+// toggling password eyes
+eyes.forEach((eye) => {
+  let checkPassword = true;
+  eye.addEventListener("click", (e) => {
+    eye.classList.toggle("show");
+    if (checkPassword) {
+      e.target.parentNode.querySelector("input").setAttribute("type", "text");
+      checkPassword = false;
+    } else {
+      e.target.parentNode
+        .querySelector("input")
+        .setAttribute("type", "password");
+      checkPassword = true;
+    }
+  });
+});
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  checkInputs([username, email, password, cpassword]);
+  checkLength(username, 6, 10);
+  checkMail(email);
+  checkPasswordChar(password);
+  checkPassword(password, cpassword);
+  displaySuccess();
+});
+// manipulating label
+function forLabel() {
+  const allInputs = document.querySelectorAll("input");
+  allInputs.forEach((input) => {
+    if (input.value.trim() == "") {
+      input.classList.remove("valid");
+    } else {
+      input.classList.add("valid");
+    }
+  });
+}
+forLabel();
+setInterval(forLabel, 100);
+//validating inputs
+function checkInputs(inputs) {
+  inputs.forEach((input) => {
+    let inputData = input.getAttribute("data-input");
+    if (input.value.trim() === "") {
+      errorInput(input, `${inputData} is required`);
+    } else {
+      sucessInput(input);
+    }
+  });
+}
+function errorInput(input, message) {
+  const parentElement = input.parentElement;
+  const p = parentElement.querySelector("p");
+  p.classList.add("error");
+  p.innerHTML = message;
+  input.classList.add("error");
+  input.classList.remove("success");
+}
+function sucessInput(input) {
+  input.classList.add("success");
+  input.classList.remove("error");
+  const parentElement = input.parentElement;
+  const p = parentElement.querySelector("p");
+  p.classList.remove("error");
+  p.innerHTML = "";
+}
+function checkLength(input, min, max) {
+  let inputLength = input.value.trim().length;
+  let inputData = input.getAttribute("data-input");
+  if (inputLength == 0) {
+    errorInput(input, `${inputData} is required`);
+  } else {
+    if (inputLength <= min) {
+      errorInput(input, `${inputData} should be more than ${min} characters`);
+    } else {
+      if (inputLength >= max) {
+        errorInput(input, `${inputData} should be less than ${max} characters`);
+      } else {
+        sucessInput(input);
+      }
+    }
+  }
+}
+function checkMail(input) {
+  let inputData = input.getAttribute("data-input");
+  if (input.value.trim() == "") {
+    errorInput(input, `${inputData} is required`);
+  } else {
+    if (!input.value.match(mailPattern)) {
+      errorInput(input, `Entered email is invalid`);
+    }
+  }
+}
+function checkPasswordChar(input) {
+  let inputData = input.getAttribute("data-input");
+  if (input.value.trim() == "") {
+    errorInput(input, `${inputData} is required`);
+  } else {
+    if (!input.value.match(passwordPattern)) {
+      errorInput(input, `symbols & special characters are not allowed`);
+    }
+  }
+}
+function checkPassword(pass1, pass2) {
+  if (pass1.value.trim() != pass2.value.trim()) {
+    errorInput(pass1, `entered password mismatch`);
+    errorInput(pass2, `entered password mismatch`);
+  }
+}
+function displaySuccess() {
+  let allText = 0;
+  p.forEach((eachP) => {
+    let pText = eachP.innerText.length;
+    let dummy = 0;
+    if (!pText < 1) {
+      dummy++;
+      allText += dummy;
+    }
+  });
+  if (allText < 1) {
+    modal.classList.add("display");
+    setTimeout(() => {
+      modal.classList.remove("display");
+      allInputs.forEach((input) => {
+        input.value = "";
+      });
+      eyes.forEach((eye) => eye.classList.remove("show"));
+    }, 3000);
+  } else {
+    modal.classList.remove("display");
+  }
+}
+document.addEventListener("click", () => {
+  modal.classList.remove("display");
+});
