@@ -1,1 +1,1 @@
-# 🔗 Stopwatch JS - CSS - HTML
+# 🔗 Photo Galary JS - CSS - HTML
