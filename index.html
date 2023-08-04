@@ -4,24 +4,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tic Tac Toe Game</title>
+    <title>Carousel</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
   </head>
   <body>
-    <div class="game-area">
-      <div class="container">
-        <div class="box" data-index="0"></div>
-        <div class="box" data-index="1"></div>
-        <div class="box" data-index="2"></div>
-        <div class="box" data-index="3"></div>
-        <div class="box" data-index="4"></div>
-        <div class="box" data-index="5"></div>
-        <div class="box" data-index="6"></div>
-        <div class="box" data-index="7"></div>
-        <div class="box" data-index="8"></div>
+    <div class="slider">
+      <div class="slider-items active"><img src="./image/1.jpg" /></div>
+      <div class="slider-items"><img src="./image/2.jpg" /></div>
+      <div class="slider-items"><img src="./image/3.jpg" /></div>
+      <div class="slider-items"><img src="./image/4.jpg" /></div>
+      <div class="slider-items"><img src="./image/5.jpg" /></div>
+      <div class="slider-items"><img src="./image/6.jpg" /></div>
+      <div class="slider-items"><img src="./image/7.jpg" /></div>
+      <div class="slider-items"><img src="./image/8.jpg" /></div>
+      <div class="slider-items"><img src="./image/9.jpg" /></div>
+      <div class="slider-items"><img src="./image/10.jpg" /></div>
+      <div class="slider-items"><img src="./image/11.jpg" /></div>
+      <div class="slider-items"><img src="./image/12.jpg" /></div>
+
+      <div class="slider-btn">
+        <button class="btnprev">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </button>
+        <button class="btnnxt">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
       </div>
-      <div class="status">Play Now!</div>
-      <button id="restart">Restart</button>
+
+      <div class="slider-dots">
+        <!-- <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div> -->
+      </div>
     </div>
     <script src="./js/script.js"></script>
   </body>

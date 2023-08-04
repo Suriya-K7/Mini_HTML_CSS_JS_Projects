@@ -1,93 +1,70 @@
-const boxes = document.querySelectorAll(".box");
-const statusTxt = document.querySelector(".status");
-const restartBtn = document.querySelector("#restart");
-let x = `<img src="./images/X.png" class="animation"/>`;
-let o = `<img src="./images/O.png" class="animation"/>`;
+const slideritems=document.querySelectorAll('.slider-items');
+const prevBtn=document.querySelector('.btnprev');
+const nxtBtn=document.querySelector('.btnnxt');
+let sliderPosition=0;
+let totalSlide=slideritems.length;
 
-const win = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
-let currentplayer = x;
-let player = "X";
-let options = ["", "", "", "", "", "", "", "", ""];
 
-let running = false;
-init();
+nxtBtn.addEventListener('click',()=>{
+    nxtSlide();
+});
 
-function init() {
-  boxes.forEach((box) => {
-    box.addEventListener("click", boxClick);
-  });
-  running = true;
-  restartBtn.addEventListener("click", gameReset);
-  statusTxt.textContent = `${player} your turn !`;
-}
+prevBtn.addEventListener('click',()=>{
+    prevSlide();
+});
 
-function boxClick() {
-  const index = this.dataset.index;
-  if (options[index] != "" || !running) {
-    return;
-  }
-  updateBox(this, index);
-  checkwinner();
-}
+function updateSlide(){
+    slideritems.forEach(slide=>{
+        slide.classList.remove('active');
+        slide.classList.add('hidden');
+    });
+    slideritems[sliderPosition].classList.add('active');
+    CreatedDots.forEach(dot=>{
+        dot.classList.remove('active');
+    });
+    CreatedDots[sliderPosition].classList.add('active');
+};
+function nxtSlide(){
+    if(sliderPosition==totalSlide-1){
+        sliderPosition=0;
+    }else{
+        sliderPosition++;
+    };
+    updateSlide();
+};
+function prevSlide(){
+    if(sliderPosition==0){
+        sliderPosition=totalSlide-1;
+    }else{
+        sliderPosition--;
+    };
+    updateSlide();
+};
+const sliderDot=document.querySelector('.slider-dots');
+    slideritems.forEach(slide=>{
+        const dots=document.createElement('div');
+        dots.classList.add('dot');
+    sliderDot.appendChild(dots);
+});
 
-function updateBox(box, index) {
-  options[index] = player;
-  box.innerHTML = currentplayer;
-}
+const CreatedDots=document.querySelectorAll('.dot');
+CreatedDots[sliderPosition].classList.add('active');
 
-function checkwinner() {
-  let isWon = false;
-  for (i = 0; i < win.length; i++) {
-    const condition = win[i];
-    const box1 = options[condition[0]];
-    const box2 = options[condition[1]];
-    const box3 = options[condition[2]];
-    if (box1 == "" || box2 == "" || box3 == "") {
-      continue;
-    }
-    if (box1 == box2 && box2 == box3) {
-      isWon = true;
-      boxes[condition[0]].classList.add("win");
-      boxes[condition[1]].classList.add("win");
-      boxes[condition[2]].classList.add("win");
-    }
-  }
-  if (isWon) {
-    statusTxt.textContent = `${player} won !`;
-    statusTxt.classList.add("txtanime");
-    running = false;
-  } else if (!options.includes("")) {
-    statusTxt.textContent = `Game Draw !!`;
-    running = false;
-  } else {
-    changePlayer();
-  }
-}
+CreatedDots.forEach((dot,index)=>{
+    dot.addEventListener('click',()=>{
+        sliderPosition=index;
+        updateSlide();
+    })
+});
 
-function changePlayer() {
-  player = player == "X" ? "O" : "X";
-  currentplayer = currentplayer === x ? o : x;
-  statusTxt.textContent = `${player} your turn !`;
-}
+setInterval(()=>{
+    if(sliderPosition==totalSlide-1){
+        sliderPosition=0;
+    }else{
+        sliderPosition++;
+    };
+    updateSlide();
+},5000)
 
-function gameReset() {
-  currentplayer = x;
-  player = "X";
-  options = ["", "", "", "", "", "", "", "", ""];
-  running = true;
-  statusTxt.textContent = `start the game!`;
-  boxes.forEach((box) => {
-    box.innerHTML = "";
-    box.classList.remove("win");
-  });
-  statusTxt.classList.remove("txtanime");
-}
+
+

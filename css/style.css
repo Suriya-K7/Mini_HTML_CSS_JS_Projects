@@ -12,131 +12,135 @@
     font-family: 'Poppins', sans-serif; 
 }
 body{
-    background-color: #353b48;
+    background-color: #2c3e50;
     width: 100vw;
     height: 100vh;
-}
-.game-area{
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    gap: 15px;
 }
-.container{
-    display: grid;
-    grid-template-columns: repeat(3,auto);
+.slider{
+    width: 600px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s ease;
 }
-.box{
-    width: 120px;
-    height: 120px;
-    border: 1px solid #fdcb6e;
-    box-shadow: 0 0 0 1px #fdcb6e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    cursor: pointer;
+.hidden{
+    display: none;
 }
-.box img{
+.slider-items.active{
+    display: block;
+    animation: slide 0.5s ease;
+}
+@keyframes slide {
+    0%{
+        opacity: 0;
+        transform: scale(6);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+
+    }
+}
+.slider-items{
     width: 100%;
     height: 100%;
-    background: transparent;
 }
-.status{
-    font-weight: 700;
-    font-size: 20px;
-    color: white;
-    user-select: none;
+.slider-items img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
 }
-#restart{
-    width: 100px;
-    border-radius: 3px;
-    border: none;
+.slider-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 5px;
+    justify-content: space-between;
+    width: 100%;
+    animation: btncolor 3s infinite;
+    display: flex;
+}
+.slider-btn button{
+    background-color: rgba(0, 0, 0, 0.534);
     outline: none;
-    background-color: #fdcb6e;
-    height: 25px;
-    font-weight: 700;
-    transition: 0.3s;
-    text-transform: uppercase;
+    border: none;
+    font-size: 30px;
+    color: #e74c3c;
+    width: 30px;
+    height: 40px;
+    line-height: 20px;
+    border-radius: 5px;
     cursor: pointer;
-    user-select: none;
 }
-#restart:hover{
-    background-color: transparent;
-    outline: 2px solid #fdcb6e;
-    transform: scale(1.1);
-    color: white;
+.slider-dots{
+    position: absolute;
+    bottom: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.534);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
-#restart:active{
-    background-color: #fdcb6e;
-    box-shadow: 0 0 2px 2px #fdcb6e;
-}
-.animation{
-    animation: zoomin 0.5s ease;
-}
-@keyframes zoomin {
-    0%{
-        transform: scale(0) rotate(0deg);
-    }
-    100%{
-        transform: scale(1) rotate(360deg);
-    }
-
-}
-.win{
-    animation: win 3s ease infinite;
-}
-@keyframes win {
-
-    0%{
-        filter: hue-rotate(360deg);
-    }
-    25%{
-        filter: hue-rotate(90deg);
-    }
-    50%{
-        filter: hue-rotate(180deg);
-    }
-    75%{
-        filter: hue-rotate(270deg);
-    }
-    100%{
-        filter: hue-rotate(360deg);
-    }
-
-}
-.txtanime{
-    background-color: cyan;
+.dot{
+    width: 30px;
+    height: 5px;
     border-radius: 3px;
-    width: 100px;
-    text-align: center;
-    animation: txtanime 3s ease infinite;
+    background-color: rgb(111, 108, 108);
+    background-color: #e74d3c90;
+    cursor: pointer;
 }
-@keyframes txtanime {
-
+.dot.active{
+    background-color: cyan;
+    animation: dotColor 2s ease infinite;
+}
+@keyframes dotColor {
     0%{
-        filter: hue-rotate(360deg);
+        filter: hue-rotate(0deg);
         transform: scale(1);
-    }
-    25%{
-        filter: hue-rotate(90deg);
-        transform: scale(1.3);
-
     }
     50%{
-        filter: hue-rotate(180deg);
-        transform: scale(1);
-    }
-    75%{
-        filter: hue-rotate(270deg);
-        transform: scale(1.3);
+        filter: hue-rotate(360deg);
+        transform: scale(1.2);
     }
     100%{
-        filter: hue-rotate(360deg);
+        filter: hue-rotate(0deg);
         transform: scale(1);
+    }
+}
+
+@keyframes btncolor {
+    0%{
+        filter: hue-rotate(0deg);
+        font-size: 35px;
+    }
+    50%{
+        filter: hue-rotate(360deg);
+        font-size: 30px;
+    }
+    100%{
+        filter: hue-rotate(0deg);
+        font-size: 35px;
+    }
+}
+@media(max-width:503px){
+    body{
+        padding: 10px;
+    }
+
+    .slider{
+        width: 480px;
+        height: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: 0.5s ease;
     }
 
 }

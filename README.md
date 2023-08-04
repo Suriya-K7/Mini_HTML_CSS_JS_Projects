@@ -1,1 +1,1 @@
-# 🔗 TIC TAK TOE JS - CSS - HTML
+# 🔗 Carousal JS - CSS - HTML
