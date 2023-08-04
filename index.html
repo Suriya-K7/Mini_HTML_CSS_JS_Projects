@@ -4,60 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QR Code Generator</title>
+    <title>Tic Tac Toe Game</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
-      integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
   </head>
   <body>
-    <div class="input">
-      <form action="#" id="frm">
-        <div class="form-grp">
-          <label for="url">Enter Your Website Link</label>
-          <input
-            type="url"
-            id="url"
-            placeholder="Enter URL"
-            autocomplete="on"
-          />
-        </div>
-        <div class="form-grp">
-          <label for="size">Select QR code Size</label>
-          <select id="size">
-            <option value="400">400X400</option>
-            <option value="500">500X500</option>
-            <option value="600">600X600</option>
-            <option value="700">700X700</option>
-          </select>
-        </div>
-        <div class="form-grp">
-          <label for="clrDark">Color Dark</label>
-          <input type="color" id="clrDark" />
-        </div>
-        <div class="form-grp">
-          <label for="clrLight">Color Light</label>
-          <input type="color" id="clrLight" value="#ffffff" />
-        </div>
-        <div class="form-grp">
-          <button class="btn" type="submit">Generate QR Code</button>
-        </div>
-        <div class="form-grp">
-          <a href="#" id="btn-save">Download</a>
-        </div>
-      </form>
-    </div>
-    <div class="output">
-      <div id="qrcode">
-        <!-- <img src="/images/qrcode.png" /> -->
+    <div class="game-area">
+      <div class="container">
+        <div class="box" data-index="0"></div>
+        <div class="box" data-index="1"></div>
+        <div class="box" data-index="2"></div>
+        <div class="box" data-index="3"></div>
+        <div class="box" data-index="4"></div>
+        <div class="box" data-index="5"></div>
+        <div class="box" data-index="6"></div>
+        <div class="box" data-index="7"></div>
+        <div class="box" data-index="8"></div>
       </div>
-      <div class="spinner">
-        <div class="loader"></div>
-        <p>Please Wait..</p>
-      </div>
+      <div class="status">Play Now!</div>
+      <button id="restart">Restart</button>
     </div>
     <script src="./js/script.js"></script>
   </body>

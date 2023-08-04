@@ -1,1 +1,1 @@
-# 🔗 QR Generator JS - CSS - HTML
+# 🔗 TIC TAK TOE JS - CSS - HTML
