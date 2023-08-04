@@ -4,42 +4,77 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Passowrd Generator</title>
+    <title>Image Slider</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <h2>Password Generator</h2>
     <div class="container">
-      <form action="#" id="frm">
-        <div class="form-group">
-          <input type="text" id="output" />
-          <button id="copy">copy passowrd</button>
+      <div class="left-side">
+        <div class="main-image">
+          <img src="./images/0.jpg" />
+          <img src="./images/1.jpg" />
+          <img src="./images/2.jpg" />
+          <img src="./images/3.jpg" />
         </div>
-        <div class="form-group">
-          <label for="length">Passowrd Length</label>
-          <input type="number" id="length" value="8" min="6" />
+        <div class="image-selector">
+          <div class="img active">
+            <a href="#" data-id="0"><img src="./images/0.jpg" /></a>
+          </div>
+          <div class="img">
+            <a href="#" data-id="1"><img src="./images/1.jpg" /></a>
+          </div>
+          <div class="img">
+            <a href="#" data-id="2"><img src="./images/2.jpg" /></a>
+          </div>
+          <div class="img">
+            <a href="#" data-id="3"><img src="./images/3.jpg" /></a>
+          </div>
         </div>
-        <div class="form-group">
-          <input type="checkbox" id="number" checked />
-          <label for="number">Numbers</label>
+      </div>
+      <div class="right-side">
+        <h2 class="title">Galaxy</h2>
+        <div class="pages">
+          <div class="page one">
+            The universe is a collection of millions of galaxies and extends
+            beyond human imagination. After the big bang, the universe was found
+            to be composed of radiation and subatomic particles. Information
+            following the big bang is arguable on how galaxies formed, that is
+            whether small particles merged to form clusters and eventually
+            galaxies or whether the universe systematized as immense clumps of
+            matter that later fragmented into galaxies (Nasa World book, 2013).
+            A galaxy is a massive area of space full
+          </div>
+          <div class="page">
+            Group of galaxies. The Andromeda galaxy is the closest full-size
+            galaxy to the Milky Way. The Andromeda Galaxy is about four times
+            bigger than the moon in the sky. Andromeda contains around one
+            trillion stars. The Andromeda Galaxy is also the only galaxy
+            noticeable to the naked eye in the Northern Hemisphere. The
+            Andromeda Galaxy is the Milky Way's largest galactic acquaintance
+            and is on course for a collision in the future. It is believed that
+            the Milky Way Galaxy and the Andromeda Galaxy, also known
+          </div>
+          <div class="page">
+            A dwarf galaxy is, “a small galaxy composed of up to several billion
+            stars—a smaller amount compared to our own Milky Way’s Galaxy’s
+            200-400 billion stars” (Wikipedia). On February 23, 2014, it was
+            reported that two galaxies that had once orbited around the
+            Andromeda Galaxy were merging together. The collision created a
+            stream of stars in one of Andromeda’s dwarf galaxies, Andromeda II.
+          </div>
+          <div class="page">
+            system of millions in a galaxy of many more in the universe. A
+            galaxy, also called a nebula, consists of billions of stars,
+            interstellar gas, dust, and dark matter which are all bound to form
+            a massive cloud in which we live. Although it cannot be very well
+            explained, dark matter makes up at least 90% of a galaxy’s mass.
+            Galaxies also contain billions upon billions of stars and their
+            diameter can range from 1,500 to 300,000 light-years.
+          </div>
         </div>
-        <div class="form-group">
-          <input type="checkbox" id="capital" />
-          <label for="capital">Capital Letters</label>
-        </div>
-        <div class="form-group">
-          <input type="checkbox" id="small" />
-          <label for="small">Small Letters</label>
-        </div>
-        <div class="form-group">
-          <input type="checkbox" id="symbol" />
-          <label for="symbol">Symbols</label>
-        </div>
-        <div class="form-group">
-          <button id="generate">Generate</button>
-        </div>
-      </form>
+      </div>
     </div>
+
     <script src="./js/script.js"></script>
   </body>
 </html>

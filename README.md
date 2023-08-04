@@ -1,1 +1,1 @@
-# 🔗 Password Generator JS - CSS - HTML
+# 🔗 Image Slider JS - CSS - HTML
