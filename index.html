@@ -4,65 +4,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Box animation</title>
+    <title>Menu design</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <div class="container"></div>
-    <script src="./js/anime.js"></script>
-    <script>
-      const container = document.querySelector(".container");
-      for (i = 0; i < 100; i++) {
-        let modal = document.createElement("div");
-        modal.classList.add("box");
-        container.appendChild(modal);
-      }
-      let allBox = document.querySelectorAll(".box");
-      let animation = anime.timeline({
-        targets: allBox,
-        easing: "easeInOutExpo",
-        loop: true,
-        delay: anime.stagger(100, { grid: [10, 10], from: "center" }),
-      });
-      animation
-        .add({
-          rotate: 180,
-          translateY: anime.stagger(-5, {
-            grid: [10, 10],
-            from: "center",
-            axis: "y",
-          }),
-          translateX: anime.stagger(-5, {
-            grid: [10, 10],
-            from: "center",
-            axis: "x",
-          }),
-        })
-        .add({
-          borderRadius: 50,
-        })
-        .add({
-          scale: 0.5,
-        })
-        .add({
-          scale: 1,
-          opacity: 0,
-        })
-        .add({
-          rotate: 180,
-          translateY: anime.stagger(0, {
-            grid: [10, 10],
-            from: "center",
-            axis: "y",
-          }),
-          translateX: anime.stagger(0, {
-            grid: [10, 10],
-            from: "center",
-            axis: "x",
-          }),
-          opacity: 1,
-          borderRadius: 0,
-        });
-    </script>
+    <div class="container">
+      <div class="box">
+        <span style="--i: 4; --x: 3; --y: 3"
+          ><i class="fa-sharp fa-solid fa-house"></i
+        ></span>
+        <span style="--i: 5; --x: 0; --y: 3"
+          ><i class="fa-sharp fa-solid fa-image"></i
+        ></span>
+        <span style="--i: 6; --x: -3; --y: -3"
+          ><i class="fa-sharp fa-solid fa-wand-magic-sparkles"></i
+        ></span>
+        <span style="--i: 7; --x: 3; --y: 0"
+          ><i class="fa-sharp fa-solid fa-film"></i
+        ></span>
+        <span style="--i: 8; --x: -3; --y: 0"
+          ><i class="fa-sharp fa-solid fa-gears"></i
+        ></span>
+        <span style="--i: 1; --x: 0; --y: -3"
+          ><i class="fa-sharp fa-solid fa-palette"></i
+        ></span>
+        <span style="--i: 2; --x: -3; --y: 3"
+          ><i class="fa-sharp fa-solid fa-school"></i
+        ></span>
+        <span style="--i: 3; --x: 3; --y: -3"
+          ><i class="fa-sharp fa-solid fa-language"></i
+        ></span>
+      </div>
+      <div class="btn"><i class="fa-solid fa-xmark"></i></div>
+    </div>
+    <script src="./js/script.js"></script>
   </body>
 </html>
