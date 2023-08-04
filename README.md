@@ -1,1 +1,1 @@
-# 🔗 Digital Clock JS - CSS - HTML
+# 🔗 Stopwatch JS - CSS - HTML
