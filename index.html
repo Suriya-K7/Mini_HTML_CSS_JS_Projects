@@ -4,84 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form validation & Auto complete search input</title>
+    <title>Custom tag (text box)</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
   </head>
   <body>
     <div class="container">
-      <div class="logo">Suriya-<span>K7</span></div>
-      <div class="searchArea">
-        <input
-          type="text"
-          autocomplete="off"
-          id="searchinput"
-          class="row"
-          placeholder="search..."
-        />
-        <button><i class="fa fa-search"></i></button>
-        <ul class="searchitems"></ul>
+      <div class="tagcontainer">
+        <input type="text" />
+      </div>
+      <div class="icons">
+        <lord-icon
+          src="https://cdn.lordicon.com/jmkrnisz.json"
+          trigger="click"
+          style="width: 32px; height: 32px"
+          class="deleteAll"
+        >
+        </lord-icon>
+        <lord-icon
+          src="https://cdn.lordicon.com/frjgvxce.json"
+          trigger="click"
+          style="width: 32px; height: 32px"
+          class="copyAll"
+        >
+        </lord-icon>
       </div>
     </div>
-    <div class="container2">
-      <form action="#" id="form">
-        <h3>Create New Account</h3>
-        <div class="row2">
-          <input
-            type="text"
-            id="username"
-            class="username"
-            data-input="username"
-            autocomplete="off"
-          />
-          <label for="username">Username</label>
-          <p></p>
-        </div>
-        <div class="row2">
-          <input
-            type="text"
-            id="email"
-            class="email"
-            autocomplete="off"
-            data-input="email"
-          />
-          <label for="email">Email ID</label>
-          <p></p>
-        </div>
-        <div class="row2">
-          <input
-            type="password"
-            id="password"
-            class="password"
-            data-input="password"
-            autocomplete="off"
-          />
-          <label for="password">Password</label>
-          <button class="eye">👁</button>
-          <p></p>
-        </div>
-        <div class="row2">
-          <input
-            type="password"
-            id="cpassword"
-            class="cpassword"
-            data-input="confirm password"
-            autocomplete="off"
-          />
-          <label for="cpassword">Confirm password</label>
-          <button class="eye">👁</button>
-          <p></p>
-        </div>
-        <button type="submit" class="submit">Sign Up</button>
-      </form>
-    </div>
-    <div class="modal">Account created successfully...</div>
     <script src="./js/script.js"></script>
   </body>
 </html>
