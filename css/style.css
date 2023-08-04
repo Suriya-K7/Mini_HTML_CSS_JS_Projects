@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+@font-face {
+    font-family: digital-7;
+    src: url(/css/digital-7.ttf);
+}
+:root{
+    --blue: #00cec9;
+    --violet: #6c5ce7;
+    --green: #2ecc71;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;  
+}
+body{
+    background-color: black;
+    user-select: none;
+    cursor: pointer;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+.day, .month{
+    color: rgba(128, 128, 128, 0.163);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 20px;
+}
+.day{
+    gap: 25px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.month{
+    gap: 25px;
+    margin-top: 10px;
+}
+.day span.active, .month span.active{
+    color: var(--violet);
+}
+.time{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 150px;
+    font-size: 120px;
+    text-align: right;
+}
+.num, .merdian span, .colon{
+    font-family: digital-7;
+}
+.h, .m, .s{
+    margin-right: 5px;
+    min-width: 58px;
+    color: var(--blue);
+    position: relative;
+}
+.h::before, .m::before, .s::before{
+    content: '8';
+    position: absolute;
+    color: rgba(128, 128, 128, 0.108);
+    text-align: right;
+    left: 0;
+    top: 0;
+}
+.merdian span{
+    display: block;
+    font-size: 45px;
+    color: rgba(128, 128, 128, 0.163);
+}
+.merdian span.active{
+    color: var(--green);
+}
+.colon{
+    color: var(--blue);
+    animation: blink 1s ease infinite;
+}
+@keyframes blink {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}   
+.date{
+    color: #0097e6;
+    font-size: 30px;
+}

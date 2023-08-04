@@ -1,1 +1,1 @@
-# 🔗 JS - CSS - HTML Mini Project - practice
+# 🔗 Digital Clock JS - CSS - HTML
