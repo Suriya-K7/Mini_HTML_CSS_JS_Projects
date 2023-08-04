@@ -1,1 +1,1 @@
-# 🔗 Image Slider JS - CSS - HTML
+# 🔗 QR Generator JS - CSS - HTML

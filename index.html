@@ -4,77 +4,61 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image Slider</title>
+    <title>QR Code Generator</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+      integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
-    <div class="container">
-      <div class="left-side">
-        <div class="main-image">
-          <img src="./images/0.jpg" />
-          <img src="./images/1.jpg" />
-          <img src="./images/2.jpg" />
-          <img src="./images/3.jpg" />
+    <div class="input">
+      <form action="#" id="frm">
+        <div class="form-grp">
+          <label for="url">Enter Your Website Link</label>
+          <input
+            type="url"
+            id="url"
+            placeholder="Enter URL"
+            autocomplete="on"
+          />
         </div>
-        <div class="image-selector">
-          <div class="img active">
-            <a href="#" data-id="0"><img src="./images/0.jpg" /></a>
-          </div>
-          <div class="img">
-            <a href="#" data-id="1"><img src="./images/1.jpg" /></a>
-          </div>
-          <div class="img">
-            <a href="#" data-id="2"><img src="./images/2.jpg" /></a>
-          </div>
-          <div class="img">
-            <a href="#" data-id="3"><img src="./images/3.jpg" /></a>
-          </div>
+        <div class="form-grp">
+          <label for="size">Select QR code Size</label>
+          <select id="size">
+            <option value="400">400X400</option>
+            <option value="500">500X500</option>
+            <option value="600">600X600</option>
+            <option value="700">700X700</option>
+          </select>
         </div>
+        <div class="form-grp">
+          <label for="clrDark">Color Dark</label>
+          <input type="color" id="clrDark" />
+        </div>
+        <div class="form-grp">
+          <label for="clrLight">Color Light</label>
+          <input type="color" id="clrLight" value="#ffffff" />
+        </div>
+        <div class="form-grp">
+          <button class="btn" type="submit">Generate QR Code</button>
+        </div>
+        <div class="form-grp">
+          <a href="#" id="btn-save">Download</a>
+        </div>
+      </form>
+    </div>
+    <div class="output">
+      <div id="qrcode">
+        <!-- <img src="/images/qrcode.png" /> -->
       </div>
-      <div class="right-side">
-        <h2 class="title">Galaxy</h2>
-        <div class="pages">
-          <div class="page one">
-            The universe is a collection of millions of galaxies and extends
-            beyond human imagination. After the big bang, the universe was found
-            to be composed of radiation and subatomic particles. Information
-            following the big bang is arguable on how galaxies formed, that is
-            whether small particles merged to form clusters and eventually
-            galaxies or whether the universe systematized as immense clumps of
-            matter that later fragmented into galaxies (Nasa World book, 2013).
-            A galaxy is a massive area of space full
-          </div>
-          <div class="page">
-            Group of galaxies. The Andromeda galaxy is the closest full-size
-            galaxy to the Milky Way. The Andromeda Galaxy is about four times
-            bigger than the moon in the sky. Andromeda contains around one
-            trillion stars. The Andromeda Galaxy is also the only galaxy
-            noticeable to the naked eye in the Northern Hemisphere. The
-            Andromeda Galaxy is the Milky Way's largest galactic acquaintance
-            and is on course for a collision in the future. It is believed that
-            the Milky Way Galaxy and the Andromeda Galaxy, also known
-          </div>
-          <div class="page">
-            A dwarf galaxy is, “a small galaxy composed of up to several billion
-            stars—a smaller amount compared to our own Milky Way’s Galaxy’s
-            200-400 billion stars” (Wikipedia). On February 23, 2014, it was
-            reported that two galaxies that had once orbited around the
-            Andromeda Galaxy were merging together. The collision created a
-            stream of stars in one of Andromeda’s dwarf galaxies, Andromeda II.
-          </div>
-          <div class="page">
-            system of millions in a galaxy of many more in the universe. A
-            galaxy, also called a nebula, consists of billions of stars,
-            interstellar gas, dust, and dark matter which are all bound to form
-            a massive cloud in which we live. Although it cannot be very well
-            explained, dark matter makes up at least 90% of a galaxy’s mass.
-            Galaxies also contain billions upon billions of stars and their
-            diameter can range from 1,500 to 300,000 light-years.
-          </div>
-        </div>
+      <div class="spinner">
+        <div class="loader"></div>
+        <p>Please Wait..</p>
       </div>
     </div>
-
     <script src="./js/script.js"></script>
   </body>
 </html>

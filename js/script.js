@@ -1,26 +1,39 @@
-const imgmini=document.querySelectorAll('.img a');
-const imgDiv=document.querySelectorAll('.img');
-let imdId=0;
+const output=document.querySelector('.output');
+const frm=document.querySelector('#frm');
+const spinner=document.querySelector('.spinner');
+const code=document.querySelector('#qrcode');
+const btnSave=document.querySelector('#btn-save');
 
-imgmini.forEach((img)=>{
-    img.addEventListener('click',(e)=>{
-        e.preventDefault();
-        imdId=img.dataset.id;
-        moveImg();
-        imgDiv.forEach((im)=>{
-            im.classList.remove('active')
-        });
-        img.parentElement.classList.add('active')
-    })
+function generateQrcode(e){
+    e.preventDefault();
+    const url=document.querySelector('#url').value;
+    const size=document.querySelector('#size').value;
+    const clrDark=document.querySelector('#clrDark').value;
+    const clrLight=document.querySelector('#clrLight').value;
+    if(url===""){
+        alert('Please enter URL to generate QR code')
+    }else{
+        spinner.style.display='flex';
+        setTimeout(()=>{
+            spinner.style.display='none';
+            code.innerHTML="";
+            const qrcode=new QRCode('qrcode',{
+                text: url,
+                width: size,
+                height: size,
+                colorDark : clrDark,
+                colorLight : clrLight,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+        },1000);
+    };
+
+};
+frm.addEventListener('submit',generateQrcode);
+
+btnSave.addEventListener('click',()=>{
+    const imgSrc=code.querySelector('img').src;
+    btnSave.href=imgSrc;
+    btnSave.download='qrcode'
 });
-
-function moveImg(){
-    const imgWidth=document.querySelector('.main-image img').clientWidth;
-    let textwidth=document.querySelector('.right-side').clientWidth;
-    let imgMove=imdId*(imgWidth);
-    console.log(imgMove);
-    document.querySelector('.main-image').style.transform=`translateX(${-imgMove}px)`;
-    let moveTxt=imdId*textwidth;
-    console.log(moveTxt)
-    document.querySelector('.pages').style.transform=`translateX(${-moveTxt}px)`;
-}
